@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: porcentaje_postgres
+    environment:
+      POSTGRES_DB: porcentaje_db
+      POSTGRES_USER: porcentaje_user
+      POSTGRES_PASSWORD: porcentaje_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: porcentaje_app
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/porcentaje_db
+      SPRING_DATASOURCE_USERNAME: porcentaje_user
+      SPRING_DATASOURCE_PASSWORD: porcentaje_pass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres-data:
