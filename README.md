@@ -9,7 +9,7 @@ Una API REST desarrollada con Spring Boot y java 21 para realizar suma de dos nu
 - Maven 3.9.9 (opcional, si deseas empaquetarlo tú mismo).
 
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/porcentaje-api.git
+git clone https://github.com/gramirez88/porcentaje-api
 cd porcentaje-api
 
 # Empaquetar el proyecto(generar el jar)
